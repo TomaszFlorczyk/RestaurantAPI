@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Hosting;
 using RestaurantAPI.Entities;
 
 
@@ -11,9 +12,13 @@ namespace RestaurantAPI
 
             // Add services to the container.
 
+            
             builder.Services.AddControllers();
             builder.Services.AddDbContext<RestaurantDbContext>();
             builder.Services.AddScoped<RestaurantSeeder>();
+            builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+
 
             var app = builder.Build();
 
