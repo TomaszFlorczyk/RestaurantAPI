@@ -15,6 +15,7 @@ namespace RestaurantAPI.Controllers
             _dbContext = dbContext;
         }
 
+        [HttpGet]
         public ActionResult<IEnumerable<Restaurant>> GetAll()
         {
             var restaurants = _dbContext
@@ -22,6 +23,19 @@ namespace RestaurantAPI.Controllers
                 .ToList();
 
             return Ok(restaurants);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Restaurant> Get([FromRoute] int id)
+        {
+            var restaurant = _dbContext 
+                .Restaruants
+                .FirstOrDefault(x => x.Id == id);
+            if (restaurant == null)
+            {
+                return NotFound();
+            }
+            return Ok(restaurant);
         }
     }
 }

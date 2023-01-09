@@ -25,7 +25,7 @@ namespace RestaurantAPI
 
         private IEnumerable<Restaurant> GetRestaurants()
         {
-                var restaurants = new List<Restaurant>();
+                var restaurants = new List<Restaurant>()
             {
                 new Restaurant()
                 {
@@ -40,13 +40,15 @@ namespace RestaurantAPI
                             new Dish()
                             {
                                 Name = "Hot wings",
-                                Price = 14
+                                Price = 14,
+                                Description = "123"
                             },
 
                             new Dish()
                             {
                                 Name = "Nuggets",
-                                Price = 10
+                                Price = 10,
+                                Description = "123"
                             },
                     },
 
@@ -56,7 +58,7 @@ namespace RestaurantAPI
                         Street = "Piekna",
                         PostalCode = "56-500"
                     }
-                };
+                },
                     new Restaurant()
                     {
                         Name = "KFC2",
@@ -70,13 +72,15 @@ namespace RestaurantAPI
                             new Dish()
                             {
                                 Name = "Kurczaki",
-                                Price = 14
+                                Price = 14,
+                                Description = "123"
                             },
 
                             new Dish()
                             {
                                 Name = "Hosy wingsy",
-                                Price = 10
+                                Price = 10,
+                                Description = "123"
                             },
                         },
 
@@ -86,7 +90,7 @@ namespace RestaurantAPI
                             Street = "Piekna",
                             PostalCode = "56-500"
                         }
-                    };
+                    }
             };
                 return restaurants;
         }
