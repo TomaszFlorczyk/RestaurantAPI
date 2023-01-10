@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using RestaurantAPI.Entities;
-
+using RestaurantAPI.Services;
 
 namespace RestaurantAPI
 {
@@ -17,6 +17,7 @@ namespace RestaurantAPI
             builder.Services.AddDbContext<RestaurantDbContext>();
             builder.Services.AddScoped<RestaurantSeeder>();
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
+            builder.Services.AddScoped<IRestaurantService, RestaurantService>();
 
 
 
