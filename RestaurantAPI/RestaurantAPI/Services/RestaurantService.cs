@@ -44,6 +44,24 @@ namespace RestaurantAPI.Services
             return restaurantsDtos;
         }
 
+        public bool Update(int id, UpdateRestaurantDto dto)
+        {
+            var restaurant = _dbContext
+                .Restaruants
+                .FirstOrDefault(x => x.Id == id);
+
+            if (restaurant == null) 
+                return false;
+
+            restaurant.Name= dto.Name;
+            restaurant.Description= dto.Description;
+            restaurant.HasDelivery= dto.HasDelivery;
+
+            _dbContext.SaveChanges();
+
+            return true;
+        }
+
         public bool Delete(int id)
         {
             var restaurant = _dbContext
