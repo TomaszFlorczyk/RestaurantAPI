@@ -25,6 +25,7 @@ namespace RestaurantAPI
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
             builder.Services.AddScoped<IRestaurantService, RestaurantService>();
             builder.Services.AddScoped<ErrorHandlingMiddleware>();
+            builder.Services.AddScoped<RequestTimeMiddleware>();
             builder.Services.AddSwaggerGen();
 
             
@@ -41,6 +42,7 @@ namespace RestaurantAPI
             seeder.Seed();
 
             app.UseMiddleware<ErrorHandlingMiddleware>();
+            app.UseMiddleware<RequestTimeMiddleware>();
 
             app.UseHttpsRedirection();
 
