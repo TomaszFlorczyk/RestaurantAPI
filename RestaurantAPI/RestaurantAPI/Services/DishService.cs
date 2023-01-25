@@ -56,8 +56,6 @@ namespace RestaurantAPI.Services
                 throw new NotFoundException("Dish not found");
             }
 
-            // var dishDto = _mapper.Map<DishDto>(dish);
-
             _context.Remove(dish);
             _context.SaveChanges();
         }
