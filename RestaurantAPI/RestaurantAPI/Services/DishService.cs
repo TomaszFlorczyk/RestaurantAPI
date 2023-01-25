@@ -41,9 +41,25 @@ namespace RestaurantAPI.Services
                 throw new NotFoundException("Dish not found");
             }
 
-            var dishDto = _mapper.Map<DishDto>(dish);
+             var dishDto = _mapper.Map<DishDto>(dish);
             return dishDto;
 
+        }
+
+        public void DeleteById(int restaurantId, int dishId)
+        {
+            var restaurant = GetRaustaurantById(restaurantId);
+
+            var dish = _context.Dishes.FirstOrDefault(d => d.Id == dishId);
+            if (dish is null || dish.RestaurantId != restaurantId)
+            {
+                throw new NotFoundException("Dish not found");
+            }
+
+            // var dishDto = _mapper.Map<DishDto>(dish);
+
+            _context.Remove(dish);
+            _context.SaveChanges();
         }
 
         public List<DishDto> GetAll(int restaurantId)
@@ -74,5 +90,7 @@ namespace RestaurantAPI.Services
 
             return restaurant;
         }
+
+        
     }
 }
